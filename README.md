@@ -1,2 +1,2 @@
 # devops-avito-testcase
-DevOps Avito testcase implementation
+DevOps Avito test case implementation
