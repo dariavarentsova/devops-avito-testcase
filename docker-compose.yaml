@@ -1,1 +1,34 @@
+version: '3.3'
 
+services:
+
+#Go application service configuration
+  app:
+    build:
+      context: ./app
+    expose:
+      - 8089
+      
+#Nginx service configuration
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    networks:
+      - my-network 
+
+#Redis service configuration      
+  redis:
+    build:
+      context: ./redis
+    expose:
+      - 6379
+    volumes:
+      - ./redis/redis.conf:/etc/redis/redis.conf
+    networks:
+      - my-network 
+
+networks:
+  my-network:
+    driver: bridge      
